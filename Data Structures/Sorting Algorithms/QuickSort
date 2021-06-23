@@ -1,0 +1,45 @@
+
+/**
+ * Program to sort an array by Quick Sort
+ * @author 00004711
+ *
+ */
+public class QuickSort {
+	
+	public static void quickSrt(int[] a, int start, int end) {
+		if(start < end) {
+			int partIndex = sortLogic(a,start,end);
+			quickSrt(a, start, partIndex-1);
+			quickSrt(a, partIndex+1, end);
+		}
+	}
+	
+	public static int sortLogic(int[] a, int low, int high) {
+		int pivot = a[(low+high)/2];
+			while(low < high) {
+				while(a[low] < pivot) low++;
+				while(a[high] > pivot) high--;
+				if(low < high) {
+					int temp = a[low];
+					a[low] = a[high];
+					a[high] = temp;
+				}
+			}
+			if(low > high) {
+				int temp = a[low];
+				a[low] = a[high];
+				a[high] = temp;
+			}
+		return high;
+	}
+	
+	
+	public static void main(String[] args) {
+		int[] a =  {10,1,9,8,2,7,3,5};
+		quickSrt(a, 0, a.length-1);
+		for(int i=0; i<a.length; i++) {
+			System.out.print(a[i]+" \t");
+		}
+	}
+
+}
