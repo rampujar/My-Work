@@ -1,7 +1,7 @@
 
 /**
  * Program to sort an array by Quick Sort
- * @author 00004711
+ * @author Sriram Pujar
  *
  */
 public class QuickSort {
