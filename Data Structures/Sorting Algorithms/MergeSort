@@ -1,7 +1,7 @@
 
 /**
  * Program to sort array by merge sort
- * @author 00004711
+ * @author Sriram Pujar
  *
  */
 public class MergSort {
