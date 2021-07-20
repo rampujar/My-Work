@@ -12,7 +12,7 @@ public class DriverCode {
 		m.add("c");
 		System.out.println(m);
 		System.out.println(m.get(2));
-    m.remove(2)
+    m.remove(2);
     System.out.println(m);
 	}
 }
