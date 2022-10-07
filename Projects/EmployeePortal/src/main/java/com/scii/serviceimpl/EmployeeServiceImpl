@@ -1,0 +1,76 @@
+package com.scii.serviceImplements;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.scii.mapper.EmployeeMapper;
+import com.scii.model.EmployeePojo;
+import com.scii.service.EmployeeService;
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+	@Autowired
+	EmployeeMapper employeeMapper;
+
+	public EmployeePojo validateEmployee(EmployeePojo employeePojo) {
+		EmployeePojo empPojo = employeeMapper.validateEmployee(employeePojo);
+		return empPojo;
+	}
+
+	public int changePassword(EmployeePojo employeePojo) {
+		return employeeMapper.changePassword(employeePojo);
+	}
+
+	public EmployeePojo getCredentials(EmployeePojo employee) {
+		return employeeMapper.getCredentials(employee);
+	}
+
+	public List<String> getTeams() {
+		return employeeMapper.getTeams();
+	}
+
+	public List<EmployeePojo> searchEmployee(EmployeePojo employeePojo) {
+		// TODO Auto-generated method stub
+		return employeeMapper.searchEmployee(employeePojo);
+	}
+
+	public List<EmployeePojo> employeeList(EmployeePojo employeePojo) {
+		// TODO Auto-generated method stub
+		return employeeMapper.employeeList(employeePojo);
+	}
+
+	public int addEmployee(EmployeePojo employeePojo) {
+		// TODO Auto-generated method stub
+		return employeeMapper.addEmployee(employeePojo);
+	}
+
+	public int updateEmployee(EmployeePojo employeePojo) {
+		// TODO Auto-generated method stub
+		return employeeMapper.updateEmployee(employeePojo);
+	}
+
+	public int deleteEmployee(String employeeId) {
+		// TODO Auto-generated method stub
+		return employeeMapper.deleteEmployee(employeeId);
+	}
+
+	public EmployeePojo verifyUserForForgotPaswd(EmployeePojo employee) {
+		// TODO Auto-generated method stub
+		return employeeMapper.verifyUserForForgotPaswd(employee);
+	}
+
+	public EmployeePojo checkIfEmployeeExixts(EmployeePojo employeePojo) {
+		// TODO Auto-generated method stub
+		return employeeMapper.checkIfEmployeeExixts(employeePojo);
+	}
+
+	public int updatePassword(EmployeePojo employee) {
+		// TODO Auto-generated method stub
+		return employeeMapper.updatePassword(employee);
+	}
+
+}
+
+
+
