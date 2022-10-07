@@ -1,0 +1,33 @@
+.gap{
+	margin-top: 10px;
+	margin-bottom : 5px;
+}
+
+.alignBtn{
+	text-align: center;
+}
+
+
+.header, .navbar{
+	font-family: fantasy;
+	background: aliceblue;
+}
+
+.employeeInfo{
+	margin-top: 3%; 
+	border:solid 1px;
+}
+
+input, button{
+	font-family: monospace;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #666666;
+   color: white;
+   text-align: center;
+}
