@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scii.mapper.EmployeeMapper">
+
+	<resultMap type="TRAINING_EMPLOYEE" id="result">
+		<result property="EMPLOYEE_ID" column="EMPLOYEE_ID" />
+		<result property="PASSWORD" column="PASSWORD" />
+		<result property="FIRST_NAME" column="FIRST_NAME" />
+		<result property="LAST_NAME" column="LAST_NAME" />
+		<result property="EMAIL_ID" column="EMAIL_ID" />
+		<result property="JOINED_AS" column="JOINED_AS" />
+		<result property="JOINED_DATE" column="JOINED_DATE" />
+		<result property="DOB" column="DOB" />
+		<result property="EMPLOYEE_TEAM" column="EMPLOYEE_TEAM" />
+		<result property="DESIGNATION" column="DESIGNATION" />
+		<result column="DELETE_FLAG" property="DELETE_FLAG"
+			javaType="Integer" />
+	</resultMap>
+
+	<select id="validateEmployee" resultMap="result"
+		parameterType="com.scii.model.EmployeePojo">select * from TRAINING_EMPLOYEE where EMPLOYEE_ID =
+		#{EMPLOYEE_ID} and PASSWORD = #{PASSWORD}and DELETE_FLAG = 0 </select>
+
+	<select id="verifyUserForForgotPaswd" resultMap="result"
+		parameterType="com.scii.model.EmployeePojo">select * from TRAINING_EMPLOYEE where EMPLOYEE_ID =
+		#{EMPLOYEE_ID} and EMAIL_ID = #{EMAIL_ID} and DELETE_FLAG = 0 </select>
+
+	<select id="getCredentials" resultMap="result"
+		parameterType="com.scii.model.EmployeePojo">select * from TRAINING_EMPLOYEE where EMPLOYEE_ID =
+		#{EMPLOYEE_ID} and EMAIL_ID = #{EMAIL_ID} </select>
+
+	<update id="changePassword"
+		parameterType="com.scii.model.EmployeePojo">UPDATE TRAINING_EMPLOYEE SET PASSWORD = #{NEW_PASSWORD}
+		WHERE EMPLOYEE_ID = #{EMPLOYEE_ID} </update>
+
+	<update id="updatePassword">update TRAINING_EMPLOYEE set PASSWORD = #{PASSWORD}
+		where EMPLOYEE_ID = #{EMPLOYEE_ID} and EMAIL_ID = #{EMAIL_ID}</update>
+
+	<select id="getTeams" resultType="string">select distinct EMPLOYEE_TEAM
+		from TRAINING_EMPLOYEE </select>
+
+	<select id="searchEmployee" resultMap="result"
+		parameterType="com.scii.model.EmployeePojo">select
+		EMPLOYEE_ID,PASSWORD,FIRST_NAME,LAST_NAME,EMAIL_ID,JOINED_AS,TO_CHAR(JOINED_DATE,
+		'YYYY-MM-DD') as JOINED_DATE,TO_CHAR(DOB, 'YYYY-MM-DD') as
+		DOB,EMPLOYEE_TEAM,DESIGNATION from TRAINING_EMPLOYEE where EMPLOYEE_ID
+		= #{EMPLOYEE_ID} and DELETE_FLAG = 0 </select>
+
+	<select id="employeeList" resultMap="result"
+		parameterType="com.scii.model.EmployeePojo">select * from TRAINING_EMPLOYEE where EMPLOYEE_TEAM =
+		#{EMPLOYEE_TEAM} and DELETE_FLAG = 0 </select>
+
+	<update id="updateEmployee"
+		parameterType="com.scii.model.EmployeePojo">update TRAINING_EMPLOYEE set FIRST_NAME =
+		#{FIRST_NAME},LAST_NAME = #{LAST_NAME},EMAIL_ID =
+		#{EMAIL_ID},EMPLOYEE_TEAM = #{EMPLOYEE_TEAM},DESIGNATION =
+		#{DESIGNATION} where EMPLOYEE_ID = #{EMPLOYEE_ID} </update>
+
+	<insert id="addEmployee"
+		parameterType="com.scii.model.EmployeePojo">insert into
+		TRAINING_EMPLOYEE(EMPLOYEE_ID,PASSWORD,FIRST_NAME,LAST_NAME,EMAIL_ID,JOINED_AS,JOINED_DATE,DOB,EMPLOYEE_TEAM,DESIGNATION,DELETE_FLAG)
+		values(#{EMPLOYEE_ID},#{PASSWORD},#{FIRST_NAME},#{LAST_NAME},#{EMAIL_ID},#{JOINED_AS},TO_DATE(#{JOINED_DATE},
+		'YYYY/MM/DD'),TO_DATE(#{DOB},
+		'YYYY/MM/DD'),#{EMPLOYEE_TEAM},#{DESIGNATION},0) </insert>
+
+	<update id="deleteEmployee" parameterType="string">update
+		TRAINING_EMPLOYEE set DELETE_FLAG = 1 where EMPLOYEE_ID =
+		#{EMPLOYEE_ID} </update>
+
+	<select id="checkIfEmployeeExixts" resultMap="result"
+		parameterType="com.scii.model.EmployeePojo">select * from TRAINING_EMPLOYEE where EMPLOYEE_ID =
+		#{EMPLOYEE_ID}</select>
+</mapper>
