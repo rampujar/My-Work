@@ -1,0 +1,37 @@
+@charset "ISO-8859-1";.gap{
+	margin-top: 10px;
+	margin-bottom : 5px;
+}
+
+.alignBtn{
+	text-align: center;
+}
+
+
+.header, .navbar{
+	font-family: fantasy;
+	background: aliceblue;
+}
+
+input, button{
+	font-family: monospace;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #666666;
+   color: white;
+   text-align: center;
+}
+
+.submitBtn{
+	text-align: center;
+}
+
+.registrationForm{
+	border: solid thin darkgrey;
+	margin-top: 4%; 
+}
